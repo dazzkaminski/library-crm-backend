@@ -9,6 +9,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class AddressMapper {
 
+  public List<AddressDTO> mapToAddressDtoList(List<Address> addresses) {
+    return addresses.stream()
+        .map(
+            address ->
+                new AddressDTO(
+                    address.getId(),
+                    address.getAddress(),
+                    address.getPostCode(),
+                    address.getCity(),
+                    address.getCounty()))
+        .collect(Collectors.toList());
+  }
+
   public AddressDTO mapToAddressDto(Address address) {
     return new AddressDTO(
         address.getId(),
@@ -25,18 +38,5 @@ public class AddressMapper {
         addressDTO.getPostCode(),
         addressDTO.getCity(),
         addressDTO.getCounty());
-  }
-
-  public List<AddressDTO> mapToAddressDtoList(List<Address> addresses) {
-    return addresses.stream()
-        .map(
-            address ->
-                new AddressDTO(
-                    address.getId(),
-                    address.getAddress(),
-                    address.getPostCode(),
-                    address.getCity(),
-                    address.getCounty()))
-        .collect(Collectors.toList());
   }
 }

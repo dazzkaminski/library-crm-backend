@@ -10,13 +10,17 @@ import org.springframework.stereotype.Component;
 public class ReaderMapper {
 
   public List<ReaderDTO> mapToReaderDtoList(List<Reader> readers) {
-    return readers.stream().map(reader -> new ReaderDTO(
-        reader.getId(),
-        reader.getFirstName(),
-        reader.getLastName(),
-        reader.getPhoneNumber(),
-        reader.getEmail(),
-        reader.getAddress()))
+    return readers.stream()
+        .map(
+            reader ->
+                new ReaderDTO(
+                    reader.getId(),
+                    reader.getFirstName(),
+                    reader.getLastName(),
+                    reader.getPhoneNumber(),
+                    reader.getEmail(),
+                    reader.getAddress(),
+                    reader.getBooks()))
         .collect(Collectors.toList());
   }
 
@@ -27,7 +31,8 @@ public class ReaderMapper {
         readerDTO.getLastName(),
         readerDTO.getPhoneNumber(),
         readerDTO.getEmail(),
-        readerDTO.getAddress());
+        readerDTO.getAddress(),
+        readerDTO.getBooks());
   }
 
   public ReaderDTO mapToReaderDTO(Reader reader) {
@@ -37,6 +42,7 @@ public class ReaderMapper {
         reader.getLastName(),
         reader.getPhoneNumber(),
         reader.getEmail(),
-        reader.getAddress());
+        reader.getAddress(),
+        reader.getBooks());
   }
 }

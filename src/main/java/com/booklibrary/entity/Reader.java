@@ -1,7 +1,6 @@
 package com.booklibrary.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,13 +15,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 public class Reader {
 
@@ -30,30 +27,21 @@ public class Reader {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @NotNull private String firstName;
+  private String firstName;
 
-  @NotNull private String lastName;
+  private String lastName;
 
-  @NotNull private String phoneNumber;
+  private String phoneNumber;
 
-  @NotNull private String email;
+  private String email;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinColumn(name = "address_id")
-  private Address address;
+  private Address address = new Address();
 
-  @OneToMany(mappedBy = "reader",
-      fetch = FetchType.LAZY,
+  @OneToMany(
+      fetch = FetchType.EAGER,
       cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-  private List<Book> books;
-
-  public Reader(int id, String firstName, String lastName, String phoneNumber, String email,
-      Address address) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.phoneNumber = phoneNumber;
-    this.email = email;
-    this.address = address;
-  }
+  @JoinColumn(name = "book_id")
+  private List<Book> books = new ArrayList<>();
 }

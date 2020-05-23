@@ -1,14 +1,16 @@
 package com.booklibrary.entity.dto;
 
-import com.booklibrary.entity.Reader;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AddressDTO {
 
   private int id;
@@ -20,15 +22,4 @@ public class AddressDTO {
   private String city;
 
   private String county;
-
-  @JsonProperty("readerId")
-  private Reader reader;
-
-  public AddressDTO(int id, String address, String postCode, String city, String county) {
-    this.id = id;
-    this.address = address;
-    this.postCode = postCode;
-    this.city = city;
-    this.county = county;
-  }
 }

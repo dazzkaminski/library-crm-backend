@@ -1,11 +1,11 @@
 package com.booklibrary.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,23 +33,8 @@ public class Book {
 
   private boolean isAvailable;
 
+  @JsonIgnore
   @ManyToOne(
-      cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-  @JoinColumn(name = "reader_id")
+      cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
   private Reader reader;
-
-  public Book(
-      int id,
-      String title,
-      String description,
-      String author,
-      String releaseDate,
-      boolean isAvailable) {
-    this.id = id;
-    this.title = title;
-    this.description = description;
-    this.author = author;
-    this.releaseDate = releaseDate;
-    this.isAvailable = isAvailable;
-  }
 }

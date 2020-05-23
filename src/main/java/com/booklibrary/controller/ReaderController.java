@@ -1,6 +1,5 @@
 package com.booklibrary.controller;
 
-import com.booklibrary.entity.Reader;
 import com.booklibrary.entity.dto.ReaderDTO;
 import com.booklibrary.mapper.ReaderMapper;
 import com.booklibrary.service.ReaderService;
@@ -24,8 +23,8 @@ public class ReaderController {
   @Autowired private ReaderMapper readerMapper;
 
   @GetMapping("/readers")
-  public List<Reader> getReaders() {
-    return readerService.getReaders();
+  public List<ReaderDTO> getReaders() {
+    return readerMapper.mapToReaderDtoList(readerService.getReaders());
   }
 
   @GetMapping("/readers/{readerId}")
@@ -34,13 +33,13 @@ public class ReaderController {
   }
 
   @PostMapping("/readers")
-  public void createReader(@RequestBody Reader reader) {
-    readerService.saveOrUpdate(reader);
+  public void createReader(@RequestBody ReaderDTO readerDTO) {
+    readerService.saveOrUpdate(readerMapper.mapToReader(readerDTO));
   }
 
   @PutMapping("/readers")
-  public void updateReader(@RequestBody Reader reader) {
-    readerService.saveOrUpdate(reader);
+  public void updateReader(@RequestBody ReaderDTO readerDTO) {
+    readerService.saveOrUpdate(readerMapper.mapToReader(readerDTO));
   }
 
   @DeleteMapping("/readers/{readerId}")

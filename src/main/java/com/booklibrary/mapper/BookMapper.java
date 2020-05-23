@@ -24,16 +24,6 @@ public class BookMapper {
         .collect(Collectors.toList());
   }
 
-  public Book mapToBook(BookDTO bookDTO) {
-    return new Book(
-        bookDTO.getId(),
-        bookDTO.getTitle(),
-        bookDTO.getDescription(),
-        bookDTO.getAuthor(),
-        bookDTO.getReleaseDate(),
-        bookDTO.isAvailable());
-  }
-
   public BookDTO mapToBookDto(Book book) {
     return new BookDTO(
         book.getId(),
@@ -43,5 +33,16 @@ public class BookMapper {
         book.getReleaseDate(),
         book.isAvailable(),
         book.getReader());
+  }
+
+  public Book mapToBook(BookDTO bookDTO) {
+    return new Book(
+        bookDTO.getId(),
+        bookDTO.getTitle(),
+        bookDTO.getDescription(),
+        bookDTO.getAuthor(),
+        bookDTO.getReleaseDate(),
+        bookDTO.isAvailable(),
+        bookDTO.getReader());
   }
 }

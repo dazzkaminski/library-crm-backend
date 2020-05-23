@@ -2,6 +2,7 @@ package com.booklibrary.controller;
 
 import com.booklibrary.entity.Book;
 import com.booklibrary.entity.dto.BookDTO;
+import com.booklibrary.exception.BookNotFoundException;
 import com.booklibrary.mapper.BookMapper;
 import com.booklibrary.service.BookService;
 import java.util.List;
@@ -30,8 +31,14 @@ public class BookController {
 
   @GetMapping("/books/{bookId}")
   public BookDTO getBook(@PathVariable int bookId) {
+
+    Book book = bookService.getBook(bookId);
+
+    if (book == null) {
+      throw new BookNotFoundException("Book id not found - " + bookId);
+    }
+
     return bookMapper.mapToBookDto(bookService.getBook(bookId));
-    //    return bookService.getBook(bookId);
   }
 
   @PostMapping("/books")
@@ -40,12 +47,21 @@ public class BookController {
   }
 
   @PutMapping("/books")
-  public void updateBook(@RequestBody Book book) {
-    bookService.saveOrUpdate(book);
+  public void updateBook(@RequestBody BookDTO bookDTO) {
+    bookService.saveOrUpdate(bookMapper.mapToBook(bookDTO));
   }
 
   @DeleteMapping("/books/{bookId}")
-  public void deleteBook(@PathVariable int bookId) {
+  public String deleteBook(@PathVariable int bookId) {
+
+    Book book = bookService.getBook(bookId);
+
+    if (book == null) {
+      throw new BookNotFoundException("Book id not found - " + bookId);
+    }
+
     bookService.deleteBook(bookId);
+
+    return "Deleted the book id - " + bookId;
   }
 }

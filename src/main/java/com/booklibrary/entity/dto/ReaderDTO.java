@@ -2,7 +2,7 @@ package com.booklibrary.entity.dto;
 
 import com.booklibrary.entity.Address;
 import com.booklibrary.entity.Book;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ReaderDTO {
 
   private int id;
@@ -27,21 +28,5 @@ public class ReaderDTO {
 
   private Address address;
 
-  @JsonProperty("title")
   private List<Book> books;
-
-  public ReaderDTO(
-      int id,
-      String firstName,
-      String lastName,
-      String phoneNumber,
-      String email,
-      Address address) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.phoneNumber = phoneNumber;
-    this.email = email;
-    this.address = address;
-  }
 }
