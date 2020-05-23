@@ -1,6 +1,8 @@
 package com.booklibrary.controller;
 
+import com.booklibrary.entity.User;
 import com.booklibrary.entity.dto.UserDTO;
+import com.booklibrary.exception.BookNotFoundException;
 import com.booklibrary.mapper.UserMapper;
 import com.booklibrary.service.UserService;
 import java.util.List;
@@ -44,6 +46,13 @@ public class UserController {
 
   @DeleteMapping("/users/{userId}")
   public void deleteUser(@PathVariable int userId) {
+
+    User user = userService.getUser(userId);
+
+    if (user == null) {
+      throw new BookNotFoundException("Book id not found - " + userId);
+    }
+
     userService.deleteUser(userId);
   }
 }
