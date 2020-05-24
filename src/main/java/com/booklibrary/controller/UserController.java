@@ -2,7 +2,7 @@ package com.booklibrary.controller;
 
 import com.booklibrary.entity.User;
 import com.booklibrary.entity.dto.UserDTO;
-import com.booklibrary.exception.BookNotFoundException;
+import com.booklibrary.exception.UserNotFoundException;
 import com.booklibrary.mapper.UserMapper;
 import com.booklibrary.service.UserService;
 import java.util.List;
@@ -31,7 +31,14 @@ public class UserController {
 
   @GetMapping("/users/{userId}")
   public UserDTO getUser(@PathVariable int userId) {
-    return userMapper.mapToUserDto(userService.getUser(userId));
+
+    User user = userService.getUser(userId);
+
+    if (user == null) {
+      throw new UserNotFoundException("User with id: " + userId + " not found");
+    }
+
+    return userMapper.mapToUserDto(user);
   }
 
   @PostMapping("/users")
@@ -50,7 +57,7 @@ public class UserController {
     User user = userService.getUser(userId);
 
     if (user == null) {
-      throw new BookNotFoundException("Book id not found - " + userId);
+      throw new UserNotFoundException("User with id: " + userId + " not found");
     }
 
     userService.deleteUser(userId);

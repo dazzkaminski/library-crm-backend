@@ -1,7 +1,5 @@
 package com.booklibrary.entity.dto;
 
-import com.booklibrary.entity.Reader;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +25,5 @@ public class BookDTO {
 
   private boolean isAvailable;
 
-  @JsonIgnore
-  private Reader reader;
+//  private Reader reader;
 }

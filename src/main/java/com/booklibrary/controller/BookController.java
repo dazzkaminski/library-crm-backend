@@ -35,10 +35,10 @@ public class BookController {
     Book book = bookService.getBook(bookId);
 
     if (book == null) {
-      throw new BookNotFoundException("Book id not found - " + bookId);
+      throw new BookNotFoundException("Book with id: " + bookId + " not found");
     }
 
-    return bookMapper.mapToBookDto(bookService.getBook(bookId));
+    return bookMapper.mapToBookDto(book);
   }
 
   @PostMapping("/books")
@@ -52,16 +52,14 @@ public class BookController {
   }
 
   @DeleteMapping("/books/{bookId}")
-  public String deleteBook(@PathVariable int bookId) {
+  public void deleteBook(@PathVariable int bookId) {
 
     Book book = bookService.getBook(bookId);
 
     if (book == null) {
-      throw new BookNotFoundException("Book id not found - " + bookId);
+      throw new BookNotFoundException("Book with id: " + bookId + " not found");
     }
 
     bookService.deleteBook(bookId);
-
-    return "Deleted the book id - " + bookId;
   }
 }

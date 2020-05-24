@@ -1,6 +1,6 @@
 package com.booklibrary.exception;
 
-public class BookNotFoundException extends RuntimeException{
+public class BookNotFoundException extends RuntimeException {
 
   public BookNotFoundException(String message) {
     super(message);
@@ -14,8 +14,8 @@ public class BookNotFoundException extends RuntimeException{
     super(cause);
   }
 
-  protected BookNotFoundException(String message, Throwable cause, boolean enableSuppression,
-      boolean writableStackTrace) {
+  protected BookNotFoundException(
+      String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
     super(message, cause, enableSuppression, writableStackTrace);
   }
 }

@@ -2,7 +2,6 @@ package com.booklibrary.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,13 +10,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
+@ToString
 @Entity
 public class Address {
 
@@ -37,7 +36,7 @@ public class Address {
   @JsonIgnore
   private Reader reader;
 
-  public Address(int id,String address, String postCode, String city, String county) {
+  public Address(int id, String address, String postCode, String city, String county) {
     this.id = id;
     this.address = address;
     this.postCode = postCode;

@@ -1,6 +1,6 @@
 package com.booklibrary.exception;
 
-public class UserNotFoundException extends RuntimeException{
+public class UserNotFoundException extends RuntimeException {
 
   public UserNotFoundException(String message) {
     super(message);
@@ -14,8 +14,8 @@ public class UserNotFoundException extends RuntimeException{
     super(cause);
   }
 
-  protected UserNotFoundException(String message, Throwable cause, boolean enableSuppression,
-      boolean writableStackTrace) {
+  protected UserNotFoundException(
+      String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
     super(message, cause, enableSuppression, writableStackTrace);
   }
 }

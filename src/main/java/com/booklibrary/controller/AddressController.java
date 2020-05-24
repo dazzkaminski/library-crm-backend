@@ -2,7 +2,7 @@ package com.booklibrary.controller;
 
 import com.booklibrary.entity.Address;
 import com.booklibrary.entity.dto.AddressDTO;
-import com.booklibrary.exception.BookNotFoundException;
+import com.booklibrary.exception.AddressNotFoundException;
 import com.booklibrary.mapper.AddressMapper;
 import com.booklibrary.service.AddressService;
 import java.util.List;
@@ -35,10 +35,10 @@ public class AddressController {
     Address address = addressService.getAddress(addressId);
 
     if (address == null) {
-      throw new BookNotFoundException("Book id not found - " + addressId);
+      throw new AddressNotFoundException("Address with id: " + addressId + " not found");
     }
 
-    return addressMapper.mapToAddressDto(addressService.getAddress(addressId));
+    return addressMapper.mapToAddressDto(address);
   }
 
   @PostMapping("/addresses")
@@ -57,7 +57,7 @@ public class AddressController {
     Address address = addressService.getAddress(addressId);
 
     if (address == null) {
-      throw new BookNotFoundException("Book id not found - " + addressId);
+      throw new AddressNotFoundException("Address with id: " + addressId + " not found");
     }
 
     addressService.deleteAddress(addressId);

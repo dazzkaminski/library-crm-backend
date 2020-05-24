@@ -1,6 +1,6 @@
 package com.booklibrary.exception;
 
-public class AddressNotFoundException extends RuntimeException{
+public class AddressNotFoundException extends RuntimeException {
 
   public AddressNotFoundException(String message) {
     super(message);
@@ -14,8 +14,8 @@ public class AddressNotFoundException extends RuntimeException{
     super(cause);
   }
 
-  protected AddressNotFoundException(String message, Throwable cause, boolean enableSuppression,
-      boolean writableStackTrace) {
+  protected AddressNotFoundException(
+      String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
     super(message, cause, enableSuppression, writableStackTrace);
   }
 }

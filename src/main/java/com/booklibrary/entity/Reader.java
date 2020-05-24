@@ -15,11 +15,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 public class Reader {
 
@@ -42,6 +44,5 @@ public class Reader {
   @OneToMany(
       fetch = FetchType.EAGER,
       cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-  @JoinColumn(name = "book_id")
   private List<Book> books = new ArrayList<>();
 }

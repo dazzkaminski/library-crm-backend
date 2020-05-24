@@ -1,15 +1,15 @@
-//package com.booklibrary.repository;
+// package com.booklibrary.repository;
 //
-//import static org.junit.jupiter.api.Assertions.assertNotNull;
+// import static org.junit.jupiter.api.Assertions.assertNotNull;
 //
-//import com.booklibrary.entity.Address;
-//import com.booklibrary.entity.Reader;
-//import org.junit.jupiter.api.Test;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
+// import com.booklibrary.entity.Address;
+// import com.booklibrary.entity.Reader;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.boot.test.context.SpringBootTest;
 //
-//@SpringBootTest
-//class ReaderRepositorySuite {
+// @SpringBootTest
+// class ReaderRepositorySuite {
 //
 //  @Autowired private ReaderRepository readerRepository;
 //
@@ -27,4 +27,4 @@
 //    System.out.println(reader);
 //    assertNotNull(tempReader);
 //  }
-//}
+// }

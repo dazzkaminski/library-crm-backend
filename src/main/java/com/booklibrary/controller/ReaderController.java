@@ -2,7 +2,8 @@ package com.booklibrary.controller;
 
 import com.booklibrary.entity.Reader;
 import com.booklibrary.entity.dto.ReaderDTO;
-import com.booklibrary.exception.BookNotFoundException;
+import com.booklibrary.exception.ReaderNotFoundException;
+import com.booklibrary.mapper.BookMapper;
 import com.booklibrary.mapper.ReaderMapper;
 import com.booklibrary.service.ReaderService;
 import java.util.List;
@@ -24,6 +25,8 @@ public class ReaderController {
 
   @Autowired private ReaderMapper readerMapper;
 
+  @Autowired private BookMapper bookMapper;
+
   @GetMapping("/readers")
   public List<ReaderDTO> getReaders() {
     return readerMapper.mapToReaderDtoList(readerService.getReaders());
@@ -35,10 +38,10 @@ public class ReaderController {
     Reader reader = readerService.getReader(readerId);
 
     if (reader == null) {
-      throw new BookNotFoundException("Book id not found - " + readerId);
+      throw new ReaderNotFoundException("Reader with id: " + readerId + " not found");
     }
 
-    return readerMapper.mapToReaderDTO(readerService.getReader(readerId));
+    return readerMapper.mapToReaderDTO(reader);
   }
 
   @PostMapping("/readers")
@@ -57,7 +60,7 @@ public class ReaderController {
     Reader reader = readerService.getReader(readerId);
 
     if (reader == null) {
-      throw new BookNotFoundException("Book id not found - " + readerId);
+      throw new ReaderNotFoundException("Reader with id: " + readerId + " not found");
     }
 
     readerService.deleteReader(readerId);
