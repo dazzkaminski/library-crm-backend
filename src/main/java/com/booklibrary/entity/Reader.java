@@ -41,8 +41,7 @@ public class Reader {
   @JoinColumn(name = "address_id")
   private Address address = new Address();
 
-  @OneToMany(
-      fetch = FetchType.EAGER,
-      cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+  @OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+  @JoinColumn(name = "reader_id")
   private List<Book> books = new ArrayList<>();
 }
