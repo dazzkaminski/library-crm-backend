@@ -26,4 +26,8 @@ public class ReaderService {
   public void deleteReader(int id) {
     readerRepository.deleteById(id);
   }
+
+  public List<Reader> filterByLastName(String lastName) {
+    return readerRepository.findByLastNameContains(lastName);
+  }
 }

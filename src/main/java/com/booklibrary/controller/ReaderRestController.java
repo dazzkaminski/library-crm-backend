@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class ReaderController {
+public class ReaderRestController {
 
   @Autowired private ReaderService readerService;
 
@@ -64,5 +64,10 @@ public class ReaderController {
     }
 
     readerService.deleteReader(readerId);
+  }
+
+  @GetMapping("/readers/search/{lastName}")
+  public List<ReaderDTO> search(@PathVariable String lastName) {
+    return readerMapper.mapToReaderDtoList(readerService.filterByLastName(lastName));
   }
 }

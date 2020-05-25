@@ -3,6 +3,7 @@ package com.booklibrary.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.PathSelectors;
@@ -15,6 +16,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAspectJAutoProxy
 @EnableSwagger2
 public class CoreConfiguration implements WebMvcConfigurer {
+
+  @Bean
+  public RestTemplate restController() {
+    return new RestTemplate();
+  }
 
   @Bean
   public Docket api() {
