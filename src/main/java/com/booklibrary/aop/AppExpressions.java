@@ -36,8 +36,7 @@ public class AppExpressions {
   @Pointcut("execution(* com.booklibrary.mapper.*.mapTo*(..))")
   public void mapTo() {}
 
-  @Pointcut(
-      "mapToDto() || mapToDtoList() || mapTo()")
+  @Pointcut("mapToDto() || mapToDtoList() || mapTo()")
   public void forMapperPackage() {}
 
   @Pointcut("saveFromService() || getFromService() || deleteFromService()")

@@ -42,12 +42,12 @@ public class Book {
       return false;
     }
     Book book = (Book) o;
-    return id == book.id &&
-        isAvailable == book.isAvailable &&
-        Objects.equals(title, book.title) &&
-        Objects.equals(description, book.description) &&
-        Objects.equals(author, book.author) &&
-        Objects.equals(releaseDate, book.releaseDate);
+    return id == book.id
+        && isAvailable == book.isAvailable
+        && Objects.equals(title, book.title)
+        && Objects.equals(description, book.description)
+        && Objects.equals(author, book.author)
+        && Objects.equals(releaseDate, book.releaseDate);
   }
 
   @Override

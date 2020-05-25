@@ -2,7 +2,6 @@ package com.booklibrary.controller;
 
 import com.booklibrary.entity.Book;
 import com.booklibrary.entity.dto.BookDTO;
-import com.booklibrary.entity.dto.ReaderDTO;
 import com.booklibrary.exception.BookNotFoundException;
 import com.booklibrary.mapper.BookMapper;
 import com.booklibrary.service.BookService;

@@ -31,7 +31,7 @@ public class BookMapper {
         book.getAuthor(),
         book.getReleaseDate(),
         book.isAvailable());
-}
+  }
 
   public Book mapToBook(BookDTO bookDTO) {
     return new Book(

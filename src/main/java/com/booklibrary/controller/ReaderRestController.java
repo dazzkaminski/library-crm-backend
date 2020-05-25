@@ -3,7 +3,6 @@ package com.booklibrary.controller;
 import com.booklibrary.entity.Reader;
 import com.booklibrary.entity.dto.ReaderDTO;
 import com.booklibrary.exception.ReaderNotFoundException;
-import com.booklibrary.mapper.BookMapper;
 import com.booklibrary.mapper.ReaderMapper;
 import com.booklibrary.service.ReaderService;
 import java.util.List;
