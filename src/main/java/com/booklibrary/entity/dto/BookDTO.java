@@ -25,7 +25,4 @@ public class BookDTO {
   private String releaseDate;
 
   private boolean isAvailable;
-
-  @JsonIgnore
-  private Reader reader;
 }

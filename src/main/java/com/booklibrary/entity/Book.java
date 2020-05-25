@@ -1,13 +1,10 @@
 package com.booklibrary.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.CascadeType;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,8 +33,25 @@ public class Book {
 
   private boolean isAvailable;
 
-  @JsonIgnore
-  @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-  @JoinColumn(name="reader_id")
-  private Reader reader;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Book book = (Book) o;
+    return id == book.id &&
+        isAvailable == book.isAvailable &&
+        Objects.equals(title, book.title) &&
+        Objects.equals(description, book.description) &&
+        Objects.equals(author, book.author) &&
+        Objects.equals(releaseDate, book.releaseDate);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, title, description, author, releaseDate, isAvailable);
+  }
 }

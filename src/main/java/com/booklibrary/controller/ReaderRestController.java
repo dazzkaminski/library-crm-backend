@@ -25,8 +25,6 @@ public class ReaderRestController {
 
   @Autowired private ReaderMapper readerMapper;
 
-  @Autowired private BookMapper bookMapper;
-
   @GetMapping("/readers")
   public List<ReaderDTO> getReaders() {
     return readerMapper.mapToReaderDtoList(readerService.getReaders());

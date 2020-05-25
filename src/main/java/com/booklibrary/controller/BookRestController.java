@@ -2,6 +2,7 @@ package com.booklibrary.controller;
 
 import com.booklibrary.entity.Book;
 import com.booklibrary.entity.dto.BookDTO;
+import com.booklibrary.entity.dto.ReaderDTO;
 import com.booklibrary.exception.BookNotFoundException;
 import com.booklibrary.mapper.BookMapper;
 import com.booklibrary.service.BookService;
@@ -43,6 +44,7 @@ public class BookRestController {
 
   @PostMapping("/books")
   public void createBook(@RequestBody BookDTO bookDTO) {
+    bookDTO.setAvailable(true);
     bookService.saveOrUpdate(bookMapper.mapToBook(bookDTO));
   }
 
@@ -61,5 +63,10 @@ public class BookRestController {
     }
 
     bookService.deleteBook(bookId);
+  }
+
+  @GetMapping("/books/search/{title}")
+  public List<BookDTO> search(@PathVariable String title) {
+    return bookMapper.mapToBookDtoList(bookService.filterByTitle(title));
   }
 }

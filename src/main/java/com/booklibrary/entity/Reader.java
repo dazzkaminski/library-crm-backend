@@ -1,7 +1,10 @@
 package com.booklibrary.entity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,7 +44,30 @@ public class Reader {
   @JoinColumn(name = "address_id")
   private Address address = new Address();
 
-  @OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-  @JoinColumn(name = "reader_id")
+  @OneToMany(targetEntity = Book.class,
+      cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
   private List<Book> books = new ArrayList<>();
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Reader reader = (Reader) o;
+    return id == reader.id &&
+        Objects.equals(firstName, reader.firstName) &&
+        Objects.equals(lastName, reader.lastName) &&
+        Objects.equals(phoneNumber, reader.phoneNumber) &&
+        Objects.equals(email, reader.email) &&
+        Objects.equals(address, reader.address) &&
+        Objects.equals(books, reader.books);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, firstName, lastName, phoneNumber, email, address, books);
+  }
 }
