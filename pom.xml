@@ -71,7 +71,7 @@
     </dependency>
   </dependencies>
   <description>CRM for public library</description>
-  <groupId>com.book-library</groupId>
+  <groupId>com.book-library-backend</groupId>
   <modelVersion>4.0.0</modelVersion>
   <name>library-backend</name>
 
