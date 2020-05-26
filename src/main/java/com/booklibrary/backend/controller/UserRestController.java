@@ -1,6 +1,7 @@
 package com.booklibrary.backend.controller;
 
 import com.booklibrary.backend.entity.User;
+import com.booklibrary.backend.entity.dto.ReaderDTO;
 import com.booklibrary.backend.entity.dto.UserDTO;
 import com.booklibrary.backend.exception.UserNotFoundException;
 import com.booklibrary.backend.mapper.UserMapper;
@@ -61,5 +62,10 @@ public class UserRestController {
     }
 
     userService.deleteUser(userId);
+  }
+
+  @GetMapping("/users/search/{userName}")
+  public List<UserDTO> search(@PathVariable String userName) {
+    return userMapper.mapToUserDtoList(userService.filterByUserName(userName));
   }
 }

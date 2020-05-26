@@ -44,7 +44,7 @@ public class EmailService {
 
     } catch (MailException e) {
 
-      LOGGER.error("Failed to process email sendings: ", e.getMessage(), e);
+      LOGGER.error("Failed to process email: ", e.getMessage(), e);
 
     }
   }
