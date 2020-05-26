@@ -6,6 +6,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.thymeleaf.TemplateEngine;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -22,6 +23,10 @@ public class CoreConfiguration implements WebMvcConfigurer {
   @Bean
   public RestTemplate restController() {
     return new RestTemplate();
+  }
+
+  @Bean public TemplateEngine templateEngine() {
+    return new TemplateEngine();
   }
 
   @Bean

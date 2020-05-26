@@ -1,9 +1,11 @@
 package com.booklibrary.backend.controller;
 
+import com.booklibrary.backend.entity.Mail;
 import com.booklibrary.backend.entity.Reader;
 import com.booklibrary.backend.entity.dto.ReaderDTO;
 import com.booklibrary.backend.exception.ReaderNotFoundException;
 import com.booklibrary.backend.mapper.ReaderMapper;
+import com.booklibrary.backend.service.EmailService;
 import com.booklibrary.backend.service.ReaderService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class ReaderRestController {
 
   @Autowired private ReaderMapper readerMapper;
 
+  @Autowired private EmailService emailService;
+
   @GetMapping("/readers")
   public List<ReaderDTO> getReaders() {
     return readerMapper.mapToReaderDtoList(readerService.getReaders());
@@ -43,6 +47,12 @@ public class ReaderRestController {
 
   @PostMapping("/readers")
   public void createReader(@RequestBody ReaderDTO readerDTO) {
+
+    Mail mail =
+        new Mail(readerDTO.getEmail(), "", "Welcome to our library", "Welcome to our library");
+
+    emailService.send(mail);
+
     readerService.saveOrUpdate(readerMapper.mapToReader(readerDTO));
   }
 
