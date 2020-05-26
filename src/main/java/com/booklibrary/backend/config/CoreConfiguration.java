@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class CoreConfiguration implements WebMvcConfigurer {
 
-  // TODO Front-end security
+  // TODO add spring security
 
   @Bean
   public RestTemplate restController() {
@@ -28,7 +28,7 @@ public class CoreConfiguration implements WebMvcConfigurer {
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.booklibrary.controller"))
+        .apis(RequestHandlerSelectors.basePackage("com.booklibrary.backend.controller"))
         .paths(PathSelectors.any())
         .build();
   }

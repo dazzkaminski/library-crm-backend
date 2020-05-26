@@ -1,5 +1,6 @@
 package com.booklibrary.backend.service;
 
+import com.booklibrary.backend.entity.Reader;
 import com.booklibrary.backend.entity.User;
 import com.booklibrary.backend.repository.UserRepository;
 import java.util.List;
@@ -25,5 +26,9 @@ public class UserService {
 
   public void deleteUser(int id) {
     userRepository.deleteById(id);
+  }
+
+  public List<User> filterByUserName(String userName) {
+    return userRepository.findByUserNameContains(userName);
   }
 }

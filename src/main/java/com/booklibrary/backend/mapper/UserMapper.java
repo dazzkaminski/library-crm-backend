@@ -14,17 +14,29 @@ public class UserMapper {
         .map(
             user ->
                 new UserDTO(
-                    user.getId(), user.getUserName(), user.getUserPassword(), user.getUserRole()))
+                    user.getId(),
+                    user.getUserName(),
+                    user.getEmail(),
+                    user.getPassword(),
+                    user.getRole()))
         .collect(Collectors.toList());
   }
 
   public UserDTO mapToUserDto(User user) {
     return new UserDTO(
-        user.getId(), user.getUserName(), user.getUserPassword(), user.getUserRole());
+        user.getId(),
+        user.getUserName(),
+        user.getEmail(),
+        user.getPassword(),
+        user.getRole());
   }
 
   public User mapToUser(UserDTO userDTO) {
     return new User(
-        userDTO.getId(), userDTO.getUserName(), userDTO.getPassword(), userDTO.getUserRole());
+        userDTO.getId(),
+        userDTO.getUserName(),
+        userDTO.getEmail(),
+        userDTO.getPassword(),
+        userDTO.getRole());
   }
 }
