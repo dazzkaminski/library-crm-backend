@@ -48,10 +48,10 @@ public class ReaderRestController {
   @PostMapping("/readers")
   public void createReader(@RequestBody ReaderDTO readerDTO) {
 
-    Mail mail =
-        new Mail(readerDTO.getEmail(), "", "Welcome to our library", "Welcome to our library");
+//    Mail mail =
+//        new Mail(readerDTO.getEmail(), "", "Welcome to our library", "Welcome to our library");
 
-    emailService.send(mail);
+//    emailService.send(mail);
 
     readerService.saveOrUpdate(readerMapper.mapToReader(readerDTO));
   }
