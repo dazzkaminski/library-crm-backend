@@ -1,5 +1,6 @@
 package com.booklibrary.backend.entity.dto;
 
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,8 @@ public class BookDTO {
   private String author;
 
   private String releaseDate;
+
+  private LocalDate dateOfBorrowing;
 
   private boolean isAvailable;
 }

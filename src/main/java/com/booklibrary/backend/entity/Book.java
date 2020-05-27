@@ -1,10 +1,13 @@
 package com.booklibrary.backend.entity;
 
+import java.time.LocalDate;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +33,8 @@ public class Book {
   private String author;
 
   private String releaseDate;
+
+  private LocalDate dateOfBorrowing;
 
   private boolean isAvailable;
 

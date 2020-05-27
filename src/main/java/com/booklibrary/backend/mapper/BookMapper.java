@@ -19,6 +19,7 @@ public class BookMapper {
                     book.getDescription(),
                     book.getAuthor(),
                     book.getReleaseDate(),
+                    book.getDateOfBorrowing(),
                     book.isAvailable()))
         .collect(Collectors.toList());
   }
@@ -30,6 +31,7 @@ public class BookMapper {
         book.getDescription(),
         book.getAuthor(),
         book.getReleaseDate(),
+        book.getDateOfBorrowing(),
         book.isAvailable());
   }
 
@@ -40,6 +42,7 @@ public class BookMapper {
         bookDTO.getDescription(),
         bookDTO.getAuthor(),
         bookDTO.getReleaseDate(),
+        bookDTO.getDateOfBorrowing(),
         bookDTO.isAvailable());
   }
 }
