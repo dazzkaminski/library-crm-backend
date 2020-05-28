@@ -77,6 +77,11 @@
       <groupId>org.thymeleaf</groupId>
       <artifactId>thymeleaf</artifactId>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <description>CRM for public library</description>
   <groupId>com.book-library-backend</groupId>
